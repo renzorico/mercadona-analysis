@@ -6,18 +6,6 @@ This project is designed to scrape product information from the Mercadona superm
 
 ## Folder Structure
 
-.
-├── app
-│ ├── init.py
-│ ├── product.py
-│ ├── scraper.py
-├── data
-├── notebooks
-│ └── testing.ipynb
-├── main.py
-├── README.md
-└── requirements.txt
-
 - **utils**: Contains the main application files.
 
   - `__init__.py`: Initializes the app module.
@@ -48,15 +36,6 @@ This project is designed to scrape product information from the Mercadona superm
    python main.py
    ```
 
-Data Processing
-
-    The scraped data is stored in a Pandas DataFrame for easy analysis.
-    Columns such as "Precio" and "Unidad" are processed to convert them into a suitable format.
-
-Streamlit Web App
-
-    A Streamlit web app is planned to visualize and explore the product data by categories.
-
-Contributions
+## Contributions
 
 Feel free to contribute by opening issues or creating pull requests. Your feedback and contributions are highly appreciated!
