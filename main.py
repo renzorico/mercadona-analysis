@@ -3,6 +3,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from utils.scraper import MercadonaScraper
+from utils.categories_extractor import get_valid_category_numbers
 import pandas as pd
 from time import sleep
 from datetime import datetime
@@ -18,7 +19,7 @@ def main():
 
     mercadona_scraper = MercadonaScraper(driver)
 
-    category_numbers = [27, 28, 29, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 56, 58, 59, 60, 62, 64, 65, 66, 68, 69, 71, 72, 75, 77, 78, 79, 80, 81, 83, 84, 86, 88, 89, 90, 92, 95, 97, 98, 99, 100, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 115, 116, 117, 118, 120, 121, 122, 123, 126, 127, 129, 130, 132, 133, 135, 138, 140, 142, 143, 145, 147, 148, 149, 150, 151, 152, 154, 155, 156, 158, 159, 161, 162, 163, 164, 166, 168, 169, 170, 171, 173, 174, 181, 185, 186, 187, 188, 189, 190, 191, 192, 194, 196, 198, 199, 201, 202, 203, 206, 207, 208, 210, 212, 213, 214, 216, 217, 218, 219, 221, 222, 225, 226, 229, 230, 231, 232, 233, 234, 235, 237, 238, 239, 241, 243, 244, 789, 884, 897]
+    category_numbers = get_valid_category_numbers()
 
     data = []
     for category_number in category_numbers:
@@ -27,7 +28,7 @@ def main():
 
     df = pd.DataFrame([vars(product) for product in data])
     def process_price(price):
-        return round(float(price.split()[0].replace(',', '.')),2)
+        return float(price.split()[0].replace(',', '.'))
 
     df['price'] = df['price'].apply(process_price)
 

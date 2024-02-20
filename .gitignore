@@ -24,8 +24,9 @@ build/
 *.egg-info/
 dist/
 build/
-.csv
+*.csv
 .ipynb
 .venv/
 /.venv
 .ipynb_checkpoints
+data/
