@@ -25,7 +25,7 @@ build/
 dist/
 build/
 *.csv
-.ipynb
+*.ipynb
 .venv/
 /.venv
 .ipynb_checkpoints
