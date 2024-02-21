@@ -38,7 +38,7 @@ def main():
     df['unit'] = df['unit'].apply(process_unidad)
 
     current_date = datetime.now()
-    formatted_date = current_date.strftime("%d%m%y_")
+    formatted_date = current_date.strftime("%d%m%y")
     file_name = f"mercadona_products_{formatted_date}.csv"
     df.to_csv(f'data/{file_name}')
 

@@ -1,5 +1,3 @@
-# mercadona_scraper/product.py
-
 class Product:
     def __init__(self, category, name, format, price, unit):
         self.category = category
