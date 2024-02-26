@@ -3,6 +3,7 @@ from utils.categories_extractor import get_valid_category_numbers
 from utils.driver import get_headless_driver
 import pandas as pd
 from datetime import datetime
+import os
 
 def process_price(price):
     return float(price.split()[0].replace(',', '.'))
@@ -11,10 +12,14 @@ def process_unidad(unidad):
     return unidad.replace('/', '')
 
 def save_to_csv(data, file_name):
+    data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
     df = pd.DataFrame([vars(product) for product in data])
     df['price'] = df['price'].apply(process_price)
     df['unit'] = df['unit'].apply(process_unidad)
-    df.to_csv(f'data/{file_name}')
+    file_path = os.path.join(data_dir, file_name)
+    df.to_csv(file_path)
 
 def main():
     driver = get_headless_driver()
